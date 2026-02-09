@@ -18,8 +18,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY app /app/app
 
-# Create directory for model mount
-RUN mkdir -p /app/model
+# Copy model
+COPY model /app/model
+
+# Set environment variable for model path
+ENV YOLO_MODEL_PATH=/app/model/yolov11n.pt
 
 # Create a non-root user
 RUN useradd -m appuser && chown -R appuser /app
@@ -29,4 +32,5 @@ USER appuser
 EXPOSE 8000
 
 # Command to run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use shell form to allow variable expansion for PORT (Cloud Run requirement)
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
