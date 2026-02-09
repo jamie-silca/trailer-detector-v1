@@ -1,0 +1,19 @@
+meta {
+  name: Detect and OCR
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8001/detect-and-ocr
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  file: @file()
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Trailer Detection Service",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

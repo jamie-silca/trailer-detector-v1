@@ -1,0 +1,14 @@
+meta {
+  name: Health Check
+  type: http
+  seq: 9
+}
+
+get {
+  url: http://localhost:8000/health
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+}

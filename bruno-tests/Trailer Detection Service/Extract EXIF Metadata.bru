@@ -1,0 +1,19 @@
+meta {
+  name: Extract EXIF Metadata
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:8002/extract_metadata
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  file: @file()
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Detect and OCR Multiple Images
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8001/detect-and-ocr/batch
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  files: @file()
+}
+
+settings {
+  encodeUrl: true
+}

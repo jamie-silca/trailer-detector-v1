@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  trailer-detector:
+    build: .
+    image: trailer-detection-yolo:latest
+    container_name: trailer_detector
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the model from the local model directory
+      - ./model:/app/model:ro
+    environment:
+      - YOLO_MODEL_PATH=/app/model/yolov11n.pt
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped

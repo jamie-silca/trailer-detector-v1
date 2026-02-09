@@ -1,0 +1,19 @@
+meta {
+  name: OCR Only
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:8001/ocr
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  file: @file()
+}
+
+settings {
+  encodeUrl: true
+}

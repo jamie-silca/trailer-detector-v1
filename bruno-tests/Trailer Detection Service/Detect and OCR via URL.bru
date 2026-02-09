@@ -1,0 +1,18 @@
+meta {
+  name: Detect and OCR via URL
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:8001/detect-and-ocr/url
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "image_url": "https://storage.googleapis.com/alpha-public-assets/test-images/DJI_20251209120743_0121_V.jpeg",
+    "confidence_threshold": 0.5
+  }
+}

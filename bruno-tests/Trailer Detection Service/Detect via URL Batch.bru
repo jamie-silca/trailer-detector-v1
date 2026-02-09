@@ -1,0 +1,22 @@
+meta {
+  name: Detect via URL Batch
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8000/detect/url/batch
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "images": [
+      { "image_url": "https://storage.googleapis.com/alpha-public-assets/test-images/DJI_20251209120743_0121_V.jpeg" },
+      { "image_url": "https://storage.googleapis.com/alpha-public-assets/test-images/DJI_20251209121312_0438_V.jpeg" },
+      { "image_url": "https://storage.googleapis.com/alpha-public-assets/test-images/DJI_20251209121622_0626_V.jpeg" }
+    ],
+    "confidence_threshold": 0.5
+  }
+}
